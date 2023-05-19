@@ -1,0 +1,130 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+{% include 'main/header.html' %}
+
+<section class="sec__main">
+    <div class="main__cont">
+
+        {% include 'main/menu.html' %}
+
+        {% for el in node %}
+        <div class="nodeinfo__cont">
+
+            <div class="name__progectinfo">
+                <img src="/static/main/img/projects/{{ el.img }}" alt="aleo"><p>{{ el.title }}</p>
+            </div>
+        
+            <div class="info__statuscont">
+                <p class="info_status">Status:</p><p class="info_statustx">{{ el.status }}</p>
+            </div>
+
+            <div class="info__typescont">
+                <div class="info__typescont_sl">
+                    <p class="info_dates">Dates:</p><p class="info_datestx">{{ el.dates }}</p>
+                </div>
+                {% if el.Community == 1 and el.tech == 1 %}
+                <p class="info__type">Type:</p><p class="info__typetx">Tech/Community</p>
+                {% elif el.tech == 1 %}
+                <p class="info__type">Type:</p><p class="info__typetx">Tech</p>
+                {% elif el.Community == 1 %}
+                <p class="info__type">Type:</p><p class="info__typetx">Community</p>
+                {% endif %}
+            </div>
+
+            <p class="info__about">{{ el.about }}</p>
+
+            <div class="info__buttoncont">
+                <a href="">
+                    <div class="info__btn">
+                        <p>Get in</p>
+                    </div>
+                </a>
+
+                <a href="/info/{{ el.title }}/{{ el.template_name }}">
+                    <div class="info__btn">
+                        <p>Guide</p>
+                    </div>
+                </a>
+
+                <a href="">
+                    <div class="info__btn">
+                        <p>World</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="info__line"></div>
+
+            <div class="info__typescont_2">
+                <div class="info__typescont_sl">
+                    <p class="info_dates">Raiting:</p><p class="info_raitingtx">{{ el.raiting }}</p>
+                </div>
+                <p class="info__type">Rewards:</p><p class="info__typetx">{{ el.rewards }}</p>
+            </div>
+
+            <div class="info__typescont_2">
+                <div class="info__typescont_sl">
+                    <p class="info_dates">Hardware:</p>
+                    {% if el.hardware == 3 %}
+                    <img src="/static/main/img/hardware.png" alt="hardware">
+                    <img src="/static/main/img/hardware.png" alt="hardware">
+                    <img src="/static/main/img/hardware.png" alt="hardware">
+                    {% elif el.hardware == 2 %}
+                    <img src="/static/main/img/hardware.png" alt="hardware">
+                    <img src="/static/main/img/hardware.png" alt="hardware">
+                    {% else %}
+                    <img src="/static/main/img/hardware.png" alt="hardware">
+                    {% endif %}
+                </div>
+                <p class="info__type">Lock:</p><p class="info__typetx">{{ el.lock }}</p>
+            </div>
+
+            <div class="info__typescont_3">
+                <div class="info__typescont_sl">
+                    <p class="info_dates">Complexity:</p>
+                    {% if el.Complexity == 3 %}
+                    <img src="/static/main/img/complexity.png" alt="complexity">
+                    <img src="/static/main/img/complexity.png" alt="complexity">
+                    <img src="/static/main/img/complexity.png" alt="complexity">
+                    {% elif el.Complexity == 2 %}
+                    <img src="/static/main/img/complexity.png" alt="complexity">
+                    <img src="/static/main/img/complexity.png" alt="complexity">
+                    {% else %}
+                    <img src="/static/main/img/complexity.png" alt="complexity">
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="info__line"></div>
+
+            <h1 class="info__systemtx">System requirements</h1>
+
+            <p class="info__systemtx2">Aleo Miner minimum:</p>
+
+            <div class="info__systemminimum">
+                <p>CPU:</p><p>{{ el.cpu }}</p>
+            </div>
+            <div class="info__systemminimum">
+                <p>RAM:</p><p>{{ el.ram }}</p>
+            </div>
+            <div class="info__systemminimum">
+                <p>OS:</p><p>{{ el.os }}</p>
+            </div>
+            <div class="info__systemminimum">
+                <p>Storage:</p><p>{{ el.storage }}</p>
+            </div>
+            <div class="info__systemminimum">
+                <p>Network:</p><p>{{ el.network }}</p>
+            </div>
+            <div class="info__systemminimum">
+                <p>Note:</p><p>{{ el.note }}</p>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+{% endblock %}
