@@ -1,0 +1,93 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+{% include 'main/header.html' %}
+<!------------------------------------------------------------- ALEO -------------------------------------------------------------->
+<section class="sec__main">
+    <div class="section">
+        <div class="aleo_header">
+            <div class="icon_img">
+                <img src="/static/main/img/projects/aleo.jpg" alt="aleo">
+            </div>
+            <div class="aleo_title">
+                <p>Aleo - Setup Guide</p>
+            </div>
+        </div>
+    <div class="aleo_sr">
+        <p class="aleo_sr_title">System Requirements</p>
+        <p class="aleo_sr_subtitle">Aleo Miner minimum:</p>
+        <div class="aleo_sr_block">
+            <p class="aleo_comp">CPU</p>
+            <p>16 cores (32 preferred)</p>
+        </div>
+        <div class="aleo_sr_block">
+            <p class="aleo_comp1">RAM</p>
+            <p>16GB (32 preferred)</p>
+        </div>
+        <div class="aleo_sr_block">
+            <p class="aleo_comp2">OS</p>
+            <p>Ubuntu 20.04 recommended, 18.04 should work</p>
+        </div>
+        <div class="aleo_sr_block">
+            <p class="aleo_comp3">Storage</p>
+            <p>128GB</p>
+        </div>
+        <div class="aleo_sr_block">
+            <p class="aleo_comp4">Network</p>
+            <p>50 Mbps upload/download</p>
+        </div>
+        <div class="aleo_sr_block">
+            <p class="aleo_comp5">Note:</p>
+            <p>You will require more than these requirement in order to be competitive</p>
+        </div>
+    </div>
+    <div class="orange_container">
+        <div class="orange_box">
+            <p class="gavno_txt">Рекомендуется следовать <span class="govno">официальной документации Aleo</span> для запуска и поддержания работы ноды. Однако, если у вас возникли сложности, воспользуйтесь гайдом ниже.</p>
+        </div>
+        <div class="orange_box">
+            <p class="gavno_txt">Не рекомендуется устанавливать на виртуальные сервера WebTropia в связи со случаями блокировок, ставьте на Dedicated сервера без приставки Virtual.</p>
+        </div>
+        <div class="orange_box">
+            <p class="gavno_txt">Рекомендуется устанавливать и запускать snarkos под пользователем root.</p>
+        </div>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_title">Установка</p>
+        <p class="aleo_sr_subtitle">Воспользуйтесь нашим скриптом для быстрой установки:</p>
+        <p class="aleo_huinya">wget -q -O aleo_snarkos3.sh https://api.nodes.guru/aleo_snarkos3.sh && chmod +x aleo_snarkos3.sh && sudo /bin/bash ale</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_title">Полезные команды</p>
+        <p class="aleo_sr_subtitle">Посмотреть данные вашего Aleo аккаунта.</p>
+        <p class="aleo_sr_subtitle2">!!! СОХРАНИТЕ ЭТИ ДАННЫЕ В БЕЗОПАСНОМ МЕСТЕ !!!</p>
+        <p class="aleo_huinya">cat $HOME/aleo/account_new.txt</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Посмотреть какой Private Key используется в вашем прувере.</p>
+        <p class="aleo_huinya">grep "prover" /etc/systemd/system/aleo-prover.service | awk '{print $5}'</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Проверить логи прувера:</p>
+        <p class="aleo_huinya">journalctl -u aleo-prover -f -o cat</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Проверить логи клиента:</p>
+        <p class="aleo_huinya">journalctl -u aleo-client -f -o cat</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Остановить aleo прувер и запустить aleo клиент.</p>
+        <p class="aleo_huinya" style="line-height:1.5;">systemctl stop aleo-prover <br> systemctl restart aleo-client</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Запуск прувера(Уже запущен после установки).</p>
+        <p class="aleo_huinya1" style="line-height:1.5;">systemctl stop aleo-client<br>systemctl restart aleo-prover</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Удалить snarkos и все установочные файлы, включая адреса майнера.</p>
+        <p class="aleo_huinya">wget -q -O aleo_remove_snarkos.sh https://api.nodes.guru/aleo_remove_snarkos2.sh && chmod +x aleo_remove_snarkos.sh && </p>
+    </div>
+</div>
+</section>
+{% endblock %}

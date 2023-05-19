@@ -1,0 +1,48 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+{% include 'main/header.html' %}
+
+<section class="sec__main">
+    <div class="main__cont">
+        
+        {% include 'main/menu.html' %}
+
+        <div class="projects__cont">
+
+            {% for el in node %}
+            <div class="project__projectcont">
+
+                <a href="/info/{{ el.title }}">
+                    <div class="progect">
+                        <div class="name__progect">
+                            <img src="/static/main/img/projects/{{ el.img }}" alt="aleo"><p>{{ el.title }}</p>
+                        </div>
+                        <div class="raiting__project">
+                            <p>Raiting:</p><p>{{ el.raiting }}</p>
+                        </div>
+    
+                        <div class="categoryobj__cont">
+                            
+                            {% if el.tech == 1 %}
+                                <p class="category__project">Tech</p>
+                            {% endif %}
+    
+                            {% if el.Community == 1 %}
+                                <p class="category__project">Community</p>
+                            {% endif %}
+    
+                        </div>
+                        
+                    </div>
+                </a>
+                
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
+
+{% endblock %}

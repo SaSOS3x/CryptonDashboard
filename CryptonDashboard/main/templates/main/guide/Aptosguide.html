@@ -1,0 +1,82 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+{% include 'main/header.html' %}
+<!------------------------------------------------------------- APTOS -------------------------------------------------------------->
+<section class="section2">
+    <div class="section">
+        <div class="aleo_header">
+            <div class="icon_img">
+                <img src="./assets/img/aptos.png" alt="aptos">
+            </div>
+            <div class="aleo_title">
+                <p>Aptos - Setup Guide</p>
+            </div>
+        </div>
+        <div class="aleo_sr">
+            <p class="aleo_sr_title">System Requirements</p>
+            <p class="aleo_sr_subtitle">Aptos Miner minimum:</p>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp">CPU</p>
+                <p>8 cores (32 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp1">RAM</p>
+                <p>32GB (32 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp2">OS</p>
+                <p>Ubuntu 20.04 recommended, 18.04 should work</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp3">Storage</p>
+                <p>300GB</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp4">Network</p>
+                <p>50 Mbps upload/download</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp5">Note:</p>
+                <p>You will require more than these requirement in order to be competitive</p>
+            </div>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Установка</p>
+            <p class="aleo_sr_subtitle">Установка длится более 10 минут, рекомендуется запускать в screen:</p>
+            <p class="aleo_huinya">screen -S aptos</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Воспользуйтесь нашим скриптом для быстрой установки:</p>
+            <p class="aleo_huinya">wget -q -O aptos_dev.sh https://api.nodes.guru/aptos_dev.sh && chmod +x aptos_dev.sh && sudo /bin/bash aptos_dev.sh</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Для мониторинга ноды можете воспользоваться нашим телеграм ботом.</p>
+            <p class="aleo_huinya">wget -q -O aptos_dev.sh https://api.nodes.guru/aptos_dev.sh && chmod +x aptos_dev.sh && sudo /bin/bash aptos_dev.sh</p>
+        </div>
+        <img src="./assets/img/tgimg.png" alt="tgimg">
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Полезные команды</p>
+            <p class="aleo_sr_subtitle">Посмотреть логи:</p>
+            <p class="aleo_huinya">journalctl -u aptosd -f</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Рестарт ноды:</p>
+            <p class="aleo_huinya">systemctl restart aptosd</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Запросить метрики:</p>
+            <p class="aleo_huinya">curl 127.0.0.1:9101/metrics 2> /dev/null | grep aptos_state_sync_version</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Обновление:</p>
+            <p class="aleo_huinya">wget -q -O aptos_update.sh https://api.nodes.guru/aptos_update.sh && chmod +x aptos_update.sh && sudo /bin/bash aptos_up</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Обновление:</p>
+            <p class="aleo_huinya" style="line-height:1.5;">ssystemctl stop aptosd <br> systemctl disable aptosd <br> rm -rf ~/aptos-core <br> rm -rf ~/.aptos <br> rm -rf /opt/aptos/</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

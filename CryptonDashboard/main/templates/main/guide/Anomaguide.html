@@ -1,0 +1,112 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+{% include 'main/header.html' %}
+<!------------------------------------------------------------- ANOMA -------------------------------------------------------------->
+<section class="section2">
+    <div class="section">
+        <div class="aleo_header">
+            <div class="icon_img">
+                <img src="./assets/img/anoma.png" alt="anoma">
+            </div>
+            <div class="aleo_title">
+                <p>Anoma - Setup Guide</p>
+            </div>
+        </div>
+        <div class="aleo_sr">
+            <p class="aleo_sr_title">System Requirements</p>
+            <p class="aleo_sr_subtitle">Aptos Miner minimum:</p>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp">CPU</p>
+                <p>4 cores (32 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp1">RAM</p>
+                <p> 16GB or 8GB (32 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp2">OS</p>
+                <p>Ubuntu 20.04 recommended, 18.04 should work</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp3">Storage</p>
+                <p>120GB</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp4">Network</p>
+                <p>50 Mbps upload/download</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp5">Note:</p>
+                <p>You will require more than these requirement in order to be competitive</p>
+            </div>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Установка</p>
+            <p class="aleo_sr_subtitle">Воспользуйтесь нашим скриптом для быстрой установки:</p>
+            <p class="aleo_huinya">wget -q -O anoma.sh https://api.nodes.guru/anoma.sh && chmod +x anoma.sh && sudo /bin/bash anoma.sh</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Ждите завершения установки, после чего выполните команду:</p>
+            <p class="aleo_huinya">source $HOME/.bash_profile</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Проверить логи ноды можно следующей командой:</p>
+            <p class="aleo_huinya">journalctl -u anomad -f</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Создание ключа</p>
+            <p class="aleo_sr_subtitle">Генерируем новый ключ командой:</p>
+            <p class="aleo_huinya">anoma wallet key gen --alias YOUR_WALLET_NAME</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">После полной синхронизации отправляем транзакцию для инициализации учетной записи:</p>
+            <p class="aleo_huinya">anomac init-account --alias YOUR_ACCOUNT_ALIAS --public-key YOUR_WALLET_NAME --source YOUR_WALLET_NAME</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Запрос токенов</p>
+            <p class="aleo_sr_subtitle">Запрашиваем токены с крана командой:</p>
+            <p class="aleo_huinya">anoma client transfer --source faucet --target YOUR_ACCOUNT_ALIAS --signer YOUR_ACCOUNT_ALIAS --token XAN --amount 1000</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Проверяем баланс:</p>
+            <p class="aleo_huinya">anoma client balance --token XAN --owner YOUR_ACCOUNT_ALIAS</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Создание валидатора</p>
+            <p class="aleo_sr_subtitle">Эта команда сгенерирует ключи, необходимые для запуска валидатора (нужно будет ввести пароль):</p>
+            <p class="aleo_huinya">anoma client init-validator --alias YOUR_VALIDATOR_NAME --source YOUR_ACCOUNT_ALIAS</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">После этого перезапускаем ноду:</p>
+            <p class="aleo_huinya">sudo systemctl restart anomad</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Теперь делегируем нашему валидатору еще токенов:</p>
+            <p class="aleo_huinya">anoma client bond --source YOUR_ACCOUNT_ALIAS --validator YOUR_VALIDATOR_NAME --amount 950</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Проверить все делегации можно командой:</p>
+            <p class="aleo_huinya">anoma client bonds --owner YOUR_ACCOUNT_ALIAS</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Полезные команды</p>
+            <p class="aleo_sr_subtitle">Отобразить все известные ключи:</p>
+            <p class="aleo_huinya">anoma wallet key list</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Сгенерировать новый ключ:</p>
+            <p class="aleo_huinya">anoma wallet key gen --alias YOUR_WALLET_NAME</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Перечислить все известные номера:</p>
+            <p class="aleo_huinya">anoma wallet address list</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Создать новый адрес:</p>
+            <p class="aleo_huinya">anoma wallet address gen --alias YOUR_NEW_WALLET_ALIAS</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
