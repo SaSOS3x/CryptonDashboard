@@ -25,11 +25,11 @@
     
                         <div class="categoryobj__cont">
                             
-                            {% if el.tech == 1 %}
+                            {% if el.tech == 1 and el.Community == 1 %}
+                                <p class="category__project">Tech/Community</p>
+                            {% elif el.tech == 1 %}
                                 <p class="category__project">Tech</p>
-                            {% endif %}
-    
-                            {% if el.Community == 1 %}
+                            {% elif el.Community == 1 %}
                                 <p class="category__project">Community</p>
                             {% endif %}
     
