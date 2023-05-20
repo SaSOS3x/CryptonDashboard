@@ -168,6 +168,7 @@ header{
     width: 50px;
     height: 50px;
     margin-right: 10px;
+    border-radius: 50px;
 }
 .raiting__project{
     display: flex;
@@ -229,6 +230,7 @@ header{
     width: 50px;
     height: 50px;
     margin-right: 10px;
+    border-radius: 50px;
 }
 .name__progectinfo p{
     font-family: 'Inter';
@@ -425,8 +427,10 @@ header{
 .icon_img img{
     height: 50px;
     width: 50px;
+    border-radius: 50px;
 }
 .aleo_sr_title{
+    margin-top: 30px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -434,6 +438,7 @@ header{
     line-height: 36px;
 }
 .aleo_sr_subtitle{
+    margin-top: 10px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -441,6 +446,7 @@ header{
     line-height: 24px;
 }
 .aleo_sr_block{
+    margin-top: 10px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -477,6 +483,10 @@ header{
     line-height: 24px;
     background-color: #FFCB9A;
     border-radius: 10px;
+    margin-top: 10px;
+}
+.orange_box:first-child{
+    margin-top: 30px;
 }
 .gavno_txt{
     padding-top: 10px;
@@ -494,6 +504,7 @@ header{
     background-color: #212529;
     padding: 15px;
     display: inline-block;
+    margin-top: 10px;
 }
 .aleo_sr_subtitle2{
     font-family: 'Inter';
@@ -514,4 +525,8 @@ header{
     background-color: #212529;
     padding: 15px;
     display: inline-block;
+    margin-top: 10px;
+}
+.img__guide__telegramm__aptos{
+    margin-top: 30px;
 }
