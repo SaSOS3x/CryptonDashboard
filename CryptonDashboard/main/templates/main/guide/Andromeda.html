@@ -1,0 +1,124 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+{% include 'main/header.html' %}
+<!------------------------------------------------------------- APTOS -------------------------------------------------------------->
+<section class="section2">
+    <div class="section">
+        <div class="aleo_header">
+            <div class="icon_img">
+                <img src="/static/main/img/projects/andromeda.jpg" alt="andromeda">
+            </div>
+            <div class="aleo_title">
+                <p>Andromeda - Setup Guide</p>
+            </div>
+        </div>
+        <div class="aleo_sr">
+            <p class="aleo_sr_title">System Requirements</p>
+            <p class="aleo_sr_subtitle">Andromeda Miner minimum:</p>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp">CPU</p>
+                <p>4 cores (8 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp1">RAM</p>
+                <p>8GB (16 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp2">OS</p>
+                <p>Ubuntu 20.04 recommended, 18.04 should work</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp3">Storage</p>
+                <p>200GB</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp4">Network</p>
+                <p>50 Mbps upload/download</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp5">Note:</p>
+                <p>You will require more than these requirement in order to be competitive</p>
+            </div>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Установка</p>
+            <p class="aleo_sr_subtitle">Воспользуйтесь нашим скриптом для быстрой установки:</p>
+            <p class="aleo_huinya">wget -q -O andromeda.sh https://api.nodes.guru/andromeda.sh && chmod +x andromeda.sh && /bin/bash andr</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Укажите имя для своей ноды и ждите завершения установки, после чего выполните команду:</p>
+            <p class="aleo_huinya">source $HOME/.bash_profile</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Создайте кошелёк, не забудьте сохранить мнемонику.</p>
+            <p class="aleo_huinya">andromedad keys add wallet</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">После полной синхронизации проверяем баланс, если всё в порядке, переходим к созданию валидатора.</p>
+            <p class="aleo_huinya">andromedad q bank balances YOUR_WALLET_ADDRESS</p>
+            <img class="img__guide__telegramm__aptos" src="/static/main/img/Andromeda-1.png" alt="tgimg">
+            <p class="aleo_sr_subtitle">Создайте валидатора:</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Ничего не изменяйте, если вы не понимаете что делаете.</p>
+            <p class="aleo_huinya" style="line-height:1.5;">andromedad tx staking create-validator \ <br>
+                --moniker="$VALIDATOR" \ <br>
+                --amount=1000000uandr \ <br>
+                --fees 300uandr \ <br>
+                --pubkey=$(andromedad tendermint show-validator) \ <br>
+                --chain-id=$CHAIN_ID \ <br>
+                --commission-max-change-rate=0.01 \ <br>
+                --commission-max-rate=0.20 \ <br>
+                --commission-rate=0.10 \ <br>
+                --min-self-delegation=1 \ <br>
+                --from=wallet \ <br>
+                --yes </p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Дополнительно</p>
+            <p class="aleo_sr_subtitle">Посмотреть логи</p>
+            <p class="aleo_huinya">journalctl -u andromedad -f -o cat</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Рестарт ноды:</p>
+            <p class="aleo_huinya">systemctl restart andromedad</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Проверить показатели ноды:</p>
+            <p class="aleo_huinya">curl localhost:26657/status</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Узнать синхронизирована ли нода, если результат false – значит нода синхронизирована</p>
+            <p class="aleo_huinya">curl -s localhost:26657/status | jq .result.sync_info.catching_up</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Узнать свой valoper адрес:</p>
+            <p class="aleo_huinya">andromedad keys show wallet --bech val -a</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Заделегировать токены (для того, чтобы увеличить свой стейк делегируйте на свой valoper адрес):</p>
+            <p class="aleo_huinya">andromedad tx staking delegate YOUR_VALOPER_ADDRESS 1000000uandr --from wallet --chain-id $CHAIN_ID</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Список активных валидаторов:</p>
+            <p class="aleo_huinya">andromedad query staking validators --limit 2000 -o json | jq -r '.validators[] | select(.status=="BOND</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Список не активных валидаторов:</p>
+            <p class="aleo_huinya">andromedad query staking validators --limit 2000 -o json | jq -r '.validators[] | select(.status=="BOND</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Используемые порты:</p>
+            <p class="aleo_huinya">26656, 26657, 9091, 9090, 6060, 1317</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Удалить ноду:</p>
+            <p class="aleo_huinya" style="line-height:1.5;">systemctl stop andromedad <br>
+                systemctl disable andromedad <br>
+                rm -rf ~/andromeda ~/.andromedad /etc/systemd/system/andromedad.service</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

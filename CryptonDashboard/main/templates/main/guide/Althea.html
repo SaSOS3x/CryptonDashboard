@@ -1,0 +1,208 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+{% include 'main/header.html' %}
+<!------------------------------------------------------------- Althea -------------------------------------------------------------->
+<section class="sec__main">
+    <div class="section">
+        <div class="aleo_header">
+            <div class="icon_img">
+                <img src="/static/main/img/projects/althea.png" alt="althea">
+            </div>
+            <div class="aleo_title">
+                <p>Althea - Setup Guide</p>
+            </div>
+        </div>
+    <div class="aleo_sr">
+        <p class="aleo_sr_title">System Requirements</p>
+        <p class="aleo_sr_subtitle">Althea Miner minimum:</p>
+        <div class="aleo_sr_block">
+            <p class="aleo_comp">CPU</p>
+            <p>2 cores (4 preferred)</p>
+        </div>
+        <div class="aleo_sr_block">
+            <p class="aleo_comp1">RAM</p>
+            <p>2GB (4 preferred)</p>
+        </div>
+        <div class="aleo_sr_block">
+            <p class="aleo_comp2">OS</p>
+            <p>Ubuntu 20.04 recommended, 18.04 should work</p>
+        </div>
+        <div class="aleo_sr_block">
+            <p class="aleo_comp3">Storage</p>
+            <p>20GB</p>
+        </div>
+        <div class="aleo_sr_block">
+            <p class="aleo_comp4">Network</p>
+            <p>50 Mbps upload/download</p>
+        </div>
+        <div class="aleo_sr_block">
+            <p class="aleo_comp5">Note:</p>
+            <p>You will require more than these requirement in order to be competitive</p>
+        </div>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_title">Установка</p>
+        <p class="aleo_sr_subtitle">Воспользуйтесь нашим скриптом для быстрой установки:</p>
+        <p class="aleo_huinya" style="line-height:1.5;">cd ~ <br>
+            mkdir althea <br>
+            mkdir althea-bin <br>
+            cd althea-bin <br>
+            wget https://github.com/althea-net/althea-chain/releases/download/v0.0.4/althea-0.0.3-4-g30eddc7-linux-amd64 <br>
+            mv althea-0.0.3-4-g30eddc7-linux-amd64 althea <br>
+            wget https://github.com/althea-net/althea-chain/releases/download/v0.0.4/client <br>
+            wget https://github.com/althea-net/althea-chain/releases/download/v0.0.4/orchestrator <br>
+            wget https://github.com/althea-net/althea-chain/releases/download/v0.0.4/register-delegate-keys <br>
+            wget https://github.com/althea-net/althea-chain/releases/download/v0.0.4/relayer <br>
+            chmod +x * <br>
+            sudo mv * /usr/bin/</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_title">Генерация ключа</p>
+        <p class="aleo_sr_subtitle2">!!! СОХРАНИТЕ ЭТИ ДАННЫЕ В БЕЗОПАСНОМ МЕСТЕ !!!</p>
+        <p class="aleo_huinya" style="line-height:1.5;">cd ~/althea <br>
+            althea init nodesguru --chain-id althea-testnet1v4 <br>
+            althea keys add nodesguru – that is the name of node</p>
+            <img class="img__guide__telegramm__aptos" src="/static/main/img/Althea-1.png" alt="tgimg">
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_title">Происхождение</p>
+        <p class="aleo_sr_subtitle">Скопируйте файл genesis, используя следующие команды:</p>
+        <p class="aleo_huinya" style="line-height:1.5;">wget https://github.com/althea-net/althea-chain/releases/download/v0.0.4/althea-testnet1-v4-genesis.json <br>
+            cp althea-testnet1-v4-genesis.json $HOME/.althea/config/genesis.json></p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Отредактируйте с помощью vi или nano ваш конфигурационный файл ~/.althea/config/config.toml, чтобы он содержал следующее:</p>
+        <p class="aleo_sr_subtitle">Выполнять:</p>
+        <p class="aleo_huinya">nano ~/.althea/config/config.toml</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Найдите persistent_peers, замените следующим значением:</p>
+        <p class="aleo_huinya">persistent_peers = "05ded2f258ab158c5526eb53aa14d122367115a7@testnet1.althea.net:26656"</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_title">Запустите узел Алтея</p>
+        <p class="aleo_huinya" style="line-height:1.5;">screen -S althea <br>
+            althea start</p>
+            <img class="img__guide__telegramm__aptos" src="/static/main/img/Althea-2.png" alt="tgimg">
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle" style="line-height:1.5;">Нажмите Ctrl + A, затем D, чтобы отключить экран <br>
+            Проверьте синхронизацию Althea с помощью:</p>
+        <p class="aleo_huinya" style="line-height:1.5;">althea status 2>&1 | jq .SyncInfo</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_title">Запрос токенов</p>
+        <p class="aleo_sr_subtitle">Проверьте свой адрес:</p>
+        <p class="aleo_huinya">althea keys list</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Скопируйте свой адрес из поля ‘адрес’:</p>
+        <img class="img__guide__telegramm__aptos" src="/static/main/img/Althea-3.png" alt="tgimg">
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Проверьте свой баланс:</p>
+        <p class="aleo_huinya">althea query bank balances 'address here'</p>
+        <img class="img__guide__telegramm__aptos" src="/static/main/img/Althea-4.png" alt="tgimg">
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Отправьте транзакцию по настройке вашего валидатора. Установите moniker='yournodename' и from='keyname' (возьмите это из шага 2):</p>
+        <p class="aleo_huinya" style="line-height:1.5;">althea tx staking create-validator \ <br>
+            --amount=10000000ualtg \ <br>
+            --pubkey=$(althea tendermint show-validator) \ <br>
+            --moniker="put your validator name here" \ <br>
+            --chain-id=althea-testnet1v5 \ <br>
+            --commission-rate="0.10" \ <br>
+            --commission-max-rate="0.20" \ <br>
+            --commission-max-change-rate="0.01" \ <br>
+            --min-self-delegation="1" \ <br>
+            --gas="auto" \ <br>
+            --gas-adjustment=1.5 \ <br>
+            --gas-prices="0.025ualtg" \ <br>
+            --from=myvalidatorkeyname</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Введите свою кодовую фразу и выберите ‘y’:</p>
+        <img class="img__guide__telegramm__aptos" src="/static/main/img/Althea-5.png" alt="tgimg">
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Подтвердите, что вы проводите проверку подлинности. Введу вам имя ключа валидатора:</p>
+        <p class="aleo_huinya">althea query staking validator $(althea keys show 'MYVALIDATORKEYNAME' --bech val --address)</p>
+        <img class="img__guide__telegramm__aptos" src="/static/main/img/Althea-6.png" alt="tgimg">
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_title">Установка гравитационного моста</p>
+        <p class="aleo_sr_subtitle">Сейчас вы проходите проверку на блокчейне Althea. Но в качестве валидатора вам также необходимо запустить компоненты Gravity bridge, иначе вы будете отключены и удалены из набора валидатора примерно через 16 часов.<br></p>
+        <p class="aleo_sr_subtitle">Отредактируйте конфигурацию узла валидатора, чтобы включить RPC. Установите ‘enable’ для api в значение true в файле app.toml.</p>
+        <p class="aleo_huinya">nano $HOME/.althea/config/app.toml</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Вот пример того, как это выглядит:</p>
+        <img class="img__guide__telegramm__aptos" src="/static/main/img/Althea-7.png" alt="tgimg">
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">После того, как вы сделаете это, вам нужно перезапустить свой валидатор.</p>
+        <p class="aleo_huinya">screen -r althea</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">нажмите ctrl-c и затем запустите</p>
+        <p class="aleo_huinya">althea start</p>
+        <p class="aleo_sr_subtitle">Нажмите Ctrl +A, затем D, чтобы отключить экран.</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_title">Зарегистрируйте свои делегатские ключи</p>
+        <p class="aleo_sr_subtitle">Как только вы сохраните фразу, сгенерированную этой командой, у вас будут две фразы для отслеживания. Сохраните ЭТУ ФРАЗУ, она вам понадобится позже. Тот, который сгенерирован здесь, - это ваш "адрес делегата", а тот, который вы сгенерировали ранее, - это ваш "адрес валидатора’.</p>
+        <p class="aleo_huinya">RUST_LOG=INFO register-delegate-keys --validator-phrase="the phrase you saved earlier" --cosmos-rpc="ht</p>
+    </div>
+
+    <div class="aleo_install">
+        <p class="aleo_sr_title">Пополните свои делегатские ключи</p>
+        <p class="aleo_sr_subtitle" style="line-height:1.5;">Как для вашего делегатского ключа Ethereum, так и для вашего делегатского ключа Cosmos потребуется некоторое количество токенов для оплаты газа. На стороне Althea chain вы отправили какой-то ‘footoken’ вместе со своим ALTG. По сути, мы используем footoken в качестве токена gas для этой тестовой сети.
+            Вы должны были получить 100 токенов Althea Governance в uALTG и столько же продовольственных токенов. Мы собираемся отправить половину на адрес делегата.
+            Чтобы получить адрес вашего ключа проверки подлинности, вы можете выполнить приведенную ниже команду, где "myvalidatorkeyname" - это то, что вы назвали своему ключу на шаге ‘сгенерировать свой ключ’.</p>
+        <p class="aleo_huinya" style="line-height:1.5;">althea keys show myvalidatorkeyname <br>
+            althea tx bank send myvalidatorkeyname 'your delegate cosmos address' 50000000footoken --chain-id=althe</p>
+    </div>
+
+    <div class="aleo_install">
+        <p class="aleo_sr_title">Загрузите и настройте Geth в тестовой сети Goerli</p>
+        <p class="aleo_sr_subtitle" style="line-height:1.5;">Для этой задачи мы будем использовать легкие клиенты Geth Ethereum. Для производственной гравитации мы предлагаем вам направить ваш Orchestrator на клиент Geth light, а затем настроить ваш клиент light на одноранговое соединение с полными узлами, которыми вы управляете. Это обеспечивает более высокую надежность, поскольку клиенты light очень быстро запускаются/ останавливаются и повторно синхронизируются. Позволяя вам, например, перестроить полный узел Ethereum без нескольких дней простоя Orchestrator.
+            Пожалуйста, обратите внимание, что только полные узлы Gets могут обслуживать клиентов Geth light, никакой другой тип узлов не подойдет. Также вы должны настроить полный узел Geth для обработки клиентских запросов, поскольку они не делают этого по умолчанию.
+            Для целей этого теста не просто следуйте приведенным ниже инструкциям, даже на самом медленном узле вы должны быть синхронизированы в течение нескольких минут.</p>
+        <p class="aleo_huinya" style="line-height:1.5;">wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.10.1-c2d2f4ed.tar.gz <br>
+            tar -xvf geth-linux-amd64-1.10.1-c2d2f4ed.tar.gz <br>
+            cd geth-linux-amd64-1.10.1-c2d2f4ed <br>
+            screen -S Goerlint  <br>
+            ./geth --syncmode "light" --goerli --http --cache 16</p>
+            <p class="aleo_sr_subtitle">Нажмите Ctrl +A, затем D, чтобы отключить экран.</p> 
+    </div>
+
+    <div class="aleo_install">
+        <p class="aleo_sr_title">Запустите свой оркестратор</p>
+        <p class="aleo_sr_subtitle" style="line-height:1.5;">Теперь, когда настройка завершена, вы можете запустить свой Orchestrator. Используйте мнемонику Cosmos, сгенерированную на шаге "регистрация ключей делегирования", и закрытый ключ Ethereum, также сгенерированный на этом шаге. Вы должны настроить свой Orchestrator в системе или где-либо еще, чтобы он продолжал работать, и перезапустить его при сбое.
+            Если ваш Orchestrator отключится более чем на 16 часов во время тестовой сети, вы будете отключены и загружены из активного набора средств проверки.
+            Поскольку вы будете часто запускать это, я предлагаю поместить команду в скрипт, например, так:</p>
+        <p class="aleo_huinya">nano start-orchestrator.sh</p>
+        
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_huinya" style="line-height:1.5;">#!/bin/bash <br>
+            RUST_LOG=INFO orchestrator \ <br>
+            --cosmos-phrase="your delegate key phrase" \ <br>
+            --ethereum-key="your delegate ethereum private key" \ <br>
+            --cosmos-legacy-rpc="http://localhost:1317" \ <br>
+            --cosmos-grpc="http://localhost:9090" \ <br>
+            --ethereum-rpc="http://localhost:8545" \ <br>
+            --fees=footoken \ <br>
+            --contract-address="0xB48095a68501bC157654d338ce86fdaEF4071B24" <br>
+            screen -S Orchestrator <br>
+            bash start-orchestrator.sh</p>
+    </div>
+    <div class="aleo_install">
+        <p class="aleo_sr_subtitle">Нажмите Ctrl +A, затем D, чтобы отключить экран.</p>
+        <p class="aleo_huinya">screen -ls</p>
+        <img class="img__guide__telegramm__aptos" src="/static/main/img/Althea-8.png" alt="tgimg">
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+{% include 'main/header.html' %}
+<!------------------------------------------------------------- APTOS -------------------------------------------------------------->
+<section class="section2">
+    <div class="section">
+        <div class="aleo_header">
+            <div class="icon_img">
+                <img src="/static/main/img/projects/empower.png" alt="empower">
+            </div>
+            <div class="aleo_title">
+                <p>Empower - Setup Guide</p>
+            </div>
+        </div>
+        <div class="aleo_sr">
+            <p class="aleo_sr_title">System Requirements</p>
+            <p class="aleo_sr_subtitle">Empower Miner minimum:</p>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp">CPU</p>
+                <p>4 cores (8 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp1">RAM</p>
+                <p>8GB (16 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp2">OS</p>
+                <p>Ubuntu 20.04 recommended, 18.04 should work</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp3">Storage</p>
+                <p>200GB</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp4">Network</p>
+                <p>50 Mbps upload/download</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp5">Note:</p>
+                <p>You will require more than these requirement in order to be competitive</p>
+            </div>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Установка</p>
+            <p class="aleo_sr_subtitle">Воспользуйтесь нашим скриптом для быстрой установки:</p>
+            <p class="aleo_huinya">wget -q -O empower.sh https://api.nodes.guru/empower.sh && chmod +x empower.sh && /bin/bash empower.sh</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Укажите имя для своей ноды и ждите завершения установки, после чего выполните команду:</p>
+            <p class="aleo_huinya">source $HOME/.bash_profile</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Создайте кошелёк, не забудьте сохранить мнемонику.</p>
+            <p class="aleo_huinya">empowerd keys add wallet</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">После полной синхронизации проверяем баланс, если всё в порядке, переходим к созданию валидатора.</p>
+            <p class="aleo_huinya">empowerd q bank balances YOUR_WALLET_ADDRESS</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Создайте валидатора:</p>
+            <p class="aleo_huinya" style="line-height:1.5;">empowerd tx staking create-validator \ <br>
+                --moniker="$VALIDATOR" \ <br>
+                --amount=1000000umpwr \ <br>
+                --fees 10000umpwr \ <br>
+                --pubkey=$(empowerd tendermint show-validator) \ <br>
+                --chain-id=$CHAIN_ID \ <br>
+                --commission-max-change-rate=0.01 \ <br>
+                --commission-max-rate=0.20 \ <br>
+                --commission-rate=0.10 \ <br>
+                --min-self-delegation=1 \ <br>
+                --from=wallet \ <br>
+                --yes</p>
+            
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Дополнительно</p>
+            <p class="aleo_sr_subtitle">Посмотреть логи</p>
+            <p class="aleo_huinya">journalctl -u empowerd -f -o cat</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Рестарт ноды:</p>
+            <p class="aleo_huinya">systemctl restart empowerd</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Проверить показатели ноды:</p>
+            <p class="aleo_huinya">curl localhost:26657/status</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Узнать синхронизирована ли нода, если результат false – значит нода синхронизирована</p>
+            <p class="aleo_huinya">curl -s localhost:26657/status | jq .result.sync_info.catching_up</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Узнать свой valoper адрес:</p>
+            <p class="aleo_huinya">empowerd keys show wallet --bech val -a</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Заделегировать токены (для того, чтобы увеличить свой стейк делегируйте на свой valoper адрес):</p>
+            <p class="aleo_huinya">empowerd tx staking delegate YOUR_VALOPER_ADDRESS 10000000unibi --from wallet --chain-id okp4d-itn-1</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Список активных валидаторов:</p>
+            <p class="aleo_huinya">empowerd query staking validators --limit 2000 -o json | jq -r '.validators[] | select.status=="BOND</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Список неактивных валидаторов:</p>
+            <p class="aleo_huinya">empowerd query staking validators --limit 2000 -o json | jq -r '.validators[] | select.status=="BOND</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Используемые порты:</p>
+            <p class="aleo_huinya">26656, 26657, 9091, 9090, 6060, 1317</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Удаление ноды:</p>
+            <p class="aleo_huinya" style="line-height:1.5;">systemctl stop empowerd <br>
+                systemctl disable empowerd <br>
+                rm -rf $(which empowerd) ~/.empowerd ~/empowerd</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

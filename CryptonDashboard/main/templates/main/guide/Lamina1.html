@@ -1,0 +1,83 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+{% include 'main/header.html' %}
+<!------------------------------------------------------------- APTOS -------------------------------------------------------------->
+<section class="section2">
+    <div class="section">
+        <div class="aleo_header">
+            <div class="icon_img">
+                <img src="/static/main/img/projects/lamina1.png" alt="lamina1">
+            </div>
+            <div class="aleo_title">
+                <p>Lamina1 - Setup Guide</p>
+            </div>
+        </div>
+        <div class="aleo_sr">
+            <p class="aleo_sr_title">System Requirements</p>
+            <p class="aleo_sr_subtitle">Lamina1 Miner minimum:</p>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp">CPU</p>
+                <p>4 cores (8 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp1">RAM</p>
+                <p>8GB (16 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp2">OS</p>
+                <p>Ubuntu 22.04 recommended</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp3">Storage</p>
+                <p>200GB</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp4">Network</p>
+                <p>50 Mbps upload/download</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp5">Note:</p>
+                <p>You will require more than these requirement in order to be competitive</p>
+            </div>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Установка</p>
+            <p class="aleo_sr_subtitle">Воспользуйтесь этими командами для быстрой установки:</p>
+            <p class="aleo_huinya">echo "deb [trusted=yes arch=amd64] https://snapshotter.lamina1.global/ubuntu jammy main"  > /etc/apt/</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Проверьте bootstraping, если он true, перейдите к следующему шагу:</p>
+            <p class="aleo_huinya">lamina1.check-bootstrap.sh</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Узнаём id своей ноды:</p>
+            <p class="aleo_huinya">lamina1.get_my_nodeid.sh</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Используйте веб-кошелек, чтобы застейкать свои токены на ID вашей ноды. На скриншоте ниже не достаточно токенов для добавления валидатора.</p>
+            <img class="img__guide__telegramm__aptos" src="/static/main/img/Lamina1-1.png" alt="tgimg">
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Дополнительно</p>
+            <p class="aleo_sr_subtitle">Посмотреть логи:</p>
+            <p class="aleo_huinya">sudo journalctl -u lamina1-node.testnet -f -o cat</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Рестарт ноды:</p>
+            <p class="aleo_huinya">systemctl restart lamina1-node.testnet</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Используемые порты:</p>
+            <p class="aleo_huinya">9650, 9671</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Удалить ноду:</p>
+            <p class="aleo_huinya" style="line-height:1.5;">systemctl stop lamina1 <br>
+                systemctl disable lamina1 <br>
+                rm -rf ~/lamina1 ~/.lamina1 /etc/systemd/system/lamina1.service</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+{% include 'main/header.html' %}
+<!------------------------------------------------------------- APTOS -------------------------------------------------------------->
+<section class="section2">
+    <div class="section">
+        <div class="aleo_header">
+            <div class="icon_img">
+                <img src="/static/main/img/projects/namada.jpg" alt="namada">
+            </div>
+            <div class="aleo_title">
+                <p>Namada - Setup Guide</p>
+            </div>
+        </div>
+        <div class="aleo_sr">
+            <p class="aleo_sr_title">System Requirements</p>
+            <p class="aleo_sr_subtitle">Namada Miner minimum:</p>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp">CPU</p>
+                <p>4 cores (8 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp1">RAM</p>
+                <p>8GB (16 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp2">OS</p>
+                <p>Ubuntu 20.04 recommended, 18.04 should work</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp3">Storage</p>
+                <p>500GB</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp4">Network</p>
+                <p>50 Mbps upload/download</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp5">Note:</p>
+                <p>You will require more than these requirement in order to be competitive</p>
+            </div>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Установка</p>
+            <p class="aleo_sr_subtitle">Воспользуйтесь нашим скриптом для быстрой установки:</p>
+            <p class="aleo_huinya">wget -q -O namada.sh https://api.nodes.guru/namada.sh && chmod +x namada.sh && sudo /bin/bash namada.sh</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Укажите имя для своей ноды и ждите завершения установки, после полной синхронизации перейдите к следующему шагу:</p>
+            <p class="aleo_huinya">source $HOME/.bash_profile</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Сгенерируйте ключи для своего аккаунта:</p>
+            <p class="aleo_huinya">namada wallet address gen --alias my-account</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Инициализируем аккаунт валидатора:</p>
+            <p class="aleo_huinya" style="line-height:1.5;">namada client init-validator \ <br>
+                --alias $VALIDATOR_ALIAS \ <br>
+                --source my-account \ <br>
+                --commission-rate 0.1 \ <br>
+                --max-commission-rate-change 0.1</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Запрашиваем токены:</p>
+            <p class="aleo_huinya" style="line-height:1.5;">namadac transfer \ <br>
+                --token NAM \ <br>
+                --amount 1000 \ <br>
+                --source faucet \ <br>
+                --target $VALIDATOR_ALIAS \ <br>
+                --signer $VALIDATOR_ALIAS</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Проверяем баланс, если всё хорошо переходим к следующему шагу:</p>
+            <p class="aleo_huinya">namada client balance --token NAM --owner $VALIDATOR_ALIAS</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Делегируем токены своему валидатору</p>
+            <p class="aleo_huinya" style="line-height:1.5;">namada client bond \ <br>
+                --validator $VALIDATOR_ALIAS \ <br>
+                --amount 1000</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Дополнительно</p>
+            <p class="aleo_sr_subtitle">Посмотреть логи</p>
+            <p class="aleo_huinya">journalctl -u namadad -f -o cat</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Рестарт ноды:</p>
+            <p class="aleo_huinya">systemctl restart namadad</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Проверить показатели ноды:</p>
+            <p class="aleo_huinya">curl localhost:26657/status</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Узнать синхронизирована ли нода, если результат false – значит нода синхронизирована</p>
+            <p class="aleo_huinya">curl -s localhost:26657/status | jq .result.sync_info.catching_up</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Используемые порты:</p>
+            <p class="aleo_huinya">26656, 26657, 26658</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Удаление ноды:</p>
+            <p class="aleo_huinya" style="line-height:1.5;">systemctl stop namadad <br>
+                systemctl disable namadad <br>
+                rm -rf ~/namada ~/.namadad /etc/systemd/system/namadad.service</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

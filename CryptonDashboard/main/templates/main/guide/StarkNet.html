@@ -1,0 +1,89 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+{% include 'main/header.html' %}
+<!------------------------------------------------------------- APTOS -------------------------------------------------------------->
+<section class="section2">
+    <div class="section">
+        <div class="aleo_header">
+            <div class="icon_img">
+                <img src="/static/main/img/projects/starknet.png" alt="starknet">
+            </div>
+            <div class="aleo_title">
+                <p>StarkNet - Setup Guide</p>
+            </div>
+        </div>
+        <div class="aleo_sr">
+            <p class="aleo_sr_title">System Requirements</p>
+            <p class="aleo_sr_subtitle">StarkNet Miner minimum:</p>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp">CPU</p>
+                <p>4 cores (8 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp1">RAM</p>
+                <p>4GB (8 preferred)</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp2">OS</p>
+                <p>Ubuntu 20.04 recommended, 18.04 should work</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp3">Storage</p>
+                <p>500GB</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp4">Network</p>
+                <p>50 Mbps upload/download</p>
+            </div>
+            <div class="aleo_sr_block">
+                <p class="aleo_comp5">Note:</p>
+                <p>You will require more than these requirement in order to be competitive</p>
+            </div>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Установка</p>
+            <p class="aleo_sr_subtitle">Если у вас ещё нет alchemy аккаунта, выполните пункт 'Получение эндпоинтов', после этого перейдите к следующему шагу.</p>
+            <p class="aleo_sr_subtitle">Замените YOUR_ALCHEMY_HTTP_ADDRESS на адрес полученный во втором пункте.</p>
+            <p class="aleo_huinya" style="line-height:1.5;">ALCHEMY=YOUR_ALCHEMY_HTTP_ADDRESS <br>
+                echo 'export ALCHEMY='$ALCHEMY >> $HOME/.bash_profile</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Для установки ноды выполните однострочный скрипт установки:</p>
+            <p class="aleo_huinya">wget -O starknet.sh https://api.nodes.guru/starknet.sh && chmod +x starknet.sh && ./starknet.sh</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Получение эндпоинтов</p>
+            <p class="aleo_sr_subtitle">Для запуска starknet мы будем использовать ноды, которые предоставляет сервис Alchemy, для этого зарегистрируйтесь на сайте alchemy.com и создайте эндпоинты в своем личном кабинете.</p>
+            <img class="img__guide__telegramm__aptos" src="/static/main/img/StarkNet-2.png" alt="tgimg">
+            <img class="img__guide__telegramm__aptos" src="/static/main/img/StarkNet-3.png" alt="tgimg">
+            <img class="img__guide__telegramm__aptos" src="/static/main/img/StarkNet-4.png" alt="tgimg">
+            <img class="img__guide__telegramm__aptos" src="/static/main/img/StarkNet-5.png" alt="tgimg">
+            <img class="img__guide__telegramm__aptos" src="/static/main/img/StarkNet-6.png" alt="tgimg">
+            <p class="aleo_sr_subtitle">Копируем адрес и переходим к пункту 'Установка'</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_title">Дополнительно</p>
+            <p class="aleo_sr_subtitle">Посмотреть логи</p>
+            <p class="aleo_huinya">journalctl -u empowerd -f -o cat</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Рестарт ноды:</p>
+            <p class="aleo_huinya">systemctl restart empowerd</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Обновить ноду:</p>
+            <p class="aleo_huinya">wget -O starknet_update.sh https://api.nodes.guru/starknet_update.sh && chmod +x starknet_update.sh &&</p>
+        </div>
+        <div class="aleo_install">
+            <p class="aleo_sr_subtitle">Удаление ноды:</p>
+            <p class="aleo_huinya" style="line-height:1.5;">systemctl stop starknetd <br>
+                systemctl disable starknetd <br>
+                rm -rf ~/pathfinder/ <br>
+                rm -rf /etc/systemd/system/starknetd.service <br>
+                rm -rf /usr/local/bin/pathfinder</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

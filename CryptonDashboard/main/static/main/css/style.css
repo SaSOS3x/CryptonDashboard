@@ -444,6 +444,7 @@ header{
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
+    /* width: 1230px; */
 }
 .aleo_sr_block{
     margin-top: 10px;
