@@ -28,3 +28,6 @@ class Node(models.Model):
 
     template_name = models.CharField('Название шаблона гайда', max_length=250)
     start = models.IntegerField('Дата старта проекта', max_length=250)
+    
+    template_world = models.CharField('Имя инфографиков', default='nothing', max_length=250)
+    urldef = models.CharField('Сылка на оф. гайд', default='nothing', max_length=250)
