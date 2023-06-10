@@ -6,9 +6,152 @@
 
 <section class="sec__main">
     <div class="main__cont">
+        <div class="world_cont">
+        <h1 class="world_tx">{{ node }} World</h1>
+        <section class="section__chart">
 
+            <div class="div__chart__line" style="display: flex; width: 1230px; height: 500px;">
+              <canvas class="aleo__chart__line" id="chartLine"></canvas>
+            </div>
+
+            <h1 class="world_tx">VPS Decentralization</h1>
+
+            <div class="div__chart" style="display: flex; width: 360px; height: 360px;">
+              <canvas id="myChart" ></canvas>
+            </div>
+
+            <h1 class="world_tx">Country Decentralization</h1>
+
+            <div class="div__chartpie" style="display: flex; width: 360px; height: 360px;">
+              <canvas id="myChartpie" ></canvas>
+            </div>
+            
+        </section>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+            
+            <script>
+                const ctx = document.getElementById('myChart');
+                new Chart(ctx, {
+                  type: 'pie',
+                  data: {
+                    labels: ['Korea Telecom', 'KORNET', '(ju)haepimeoniaissi', 'Contabo', 'Kornet', 'Digital Ocean', 'Alibaba.com Singapore E-Co', 'Hetzner'],
+                    datasets: [{
+                      label: 'VPS Decentralization',
+                      data: [
+                        {% for el in world %}
+                            {{ el.field1 }},
+                            {{ el.field2 }},
+                            {{ el.field3 }},
+                            {{ el.field4 }},
+                            {{ el.field5 }},
+                            {{ el.field6 }},
+                            {{ el.field7 }},
+                            {{ el.field8 }}
+                        {% endfor %}
+                      ],
+                    //   652, 431, 219, 139, 100, 56, 22, 20
+                      backgroundColor: [
+                        'rgba(92, 123, 217, 1)',
+                        'rgba(145, 204, 117, 1)',
+                        'rgba(250, 200, 88, 1)',
+                        'rgba(238, 102, 102, 1)',
+                        'rgba(115, 192, 222, 1)',
+                        'rgba(59, 162, 114, 1)',
+                        'rgba(249, 130, 81, 1)',
+                        'rgba(130, 81, 152, 1)'
+                    ],
+                      borderWidth: 1
+                    }]
+                  },
+                  options:{
+                    labels: false,
+                    dispaly: false,
+                    plugins: {
+                      legend: {
+                        display: false
+                      },
+                    }
+                  },
+                  plugins: [ChartDataLabels]
+                });
+              </script>
         
-
+              <script>
+                const ctxxx = document.getElementById('myChartpie');
+                new Chart(ctxxx, {
+                  type: 'pie',
+                  data: {
+                    labels: ['South Korea', 'Germany', 'United States', 'Hong Kong', 'Singapore', 'Russia', 'Netherlands', 'Finland'],
+                    datasets: [{
+                      label: 'Country Decentralization',
+                      data: [
+                        {% for el in vps %}
+                            {{ el.field1 }},
+                            {{ el.field2 }},
+                            {{ el.field3 }},
+                            {{ el.field4 }},
+                            {{ el.field5 }},
+                            {{ el.field6 }},
+                            {{ el.field7 }},
+                            {{ el.field8 }}
+                        {% endfor %}
+                      ],
+                    //   791, 117, 58, 31, 18, 13, 11, 11
+                      backgroundColor: [
+                        'rgba(92, 123, 217, 1)',
+                        'rgba(145, 204, 117, 1)',
+                        'rgba(250, 200, 88, 1)',
+                        'rgba(238, 102, 102, 1)',
+                        'rgba(115, 192, 222, 1)',
+                        'rgba(59, 162, 114, 1)',
+                        'rgba(249, 130, 81, 1)',
+                        'rgba(130, 81, 152, 1)'
+                    ],
+                      borderWidth: 1
+                    }]
+                  },
+                  options:{
+                    labels: false,
+                    dispaly: false,
+                    plugins: {
+                      legend: {
+                        display: false
+                      },
+                    }
+                  },
+                  plugins: [ChartDataLabels]
+                  
+                });
+              </script>
+              <script>
+                const ctxx = document.getElementById('chartLine');
+                new Chart(ctxx, {
+                  type: 'line',
+                  data: {
+                    labels: ['December', 'January', 'February', 'March', 'April', 'May'],
+                    datasets: [{
+                      label: 'Total Nodes',
+                      data: [
+                        {% for el in country %}
+                            {{ el.field1 }},
+                            {{ el.field2 }},
+                            {{ el.field3 }},
+                            {{ el.field4 }},
+                            {{ el.field5 }},
+                            {{ el.field6 }}
+                        {% endfor %}
+                      ],
+                    //   10457, 8704, 2468, 191, 104, 1624
+                      fill: false,
+                      borderColor: 'rgb(75, 192, 192)',
+                      tension: 0.1
+                    }]
+                  },
+                  options: {}
+                })
+                </script>
+        </div>
     </div>
 </section>
 {% endblock %}

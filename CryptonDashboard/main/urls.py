@@ -17,4 +17,6 @@ urlpatterns = [
 
     path('info/<node_name>/<node_guide>', views.guide, name='info'),
 
+    path('world/<node_name>', views.world),
+
 ]

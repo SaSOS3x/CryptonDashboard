@@ -36,7 +36,7 @@
             <p class="info__about">{{ el.about }}</p>
             <!-- сылка для проектов: https://developer.aleo.org/testnet/getting_started/overview/ -->
             <div class="info__buttoncont">
-                <a href="">
+                <a href="{{ el.urldef }}">
                     <div class="info__btn">
                         <p>Get in</p>
                     </div>
@@ -48,7 +48,7 @@
                     </div>
                 </a>
 
-                <a href="/info/{{ el.title }}/{{ el.template_name }}">
+                <a href="/world/{{ el.title }}">
                     <div class="info__btn">
                         <p>World</p>
                     </div>

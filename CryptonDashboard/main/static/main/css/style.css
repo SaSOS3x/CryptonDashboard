@@ -62,6 +62,33 @@ header{
     flex-direction: column;
     align-items: center;
 }
+.section__chart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.world_tx{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    color: black;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.world_cont{
+    background-color: white;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    border-radius: 15px;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .filtres__cont{
     width: 1220px;
     display: flex;

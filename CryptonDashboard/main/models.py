@@ -31,3 +31,35 @@ class Node(models.Model):
     
     template_world = models.CharField('Имя инфографиков', default='nothing', max_length=250)
     urldef = models.CharField('Сылка на оф. гайд', default='nothing', max_length=250)
+
+class World(models.Model):
+    name = models.CharField('Название ноды', max_length=250)
+    field1 = models.IntegerField('Korea Talecom')
+    field2 = models.IntegerField('KORNET')
+    field3 = models.IntegerField('(ju)haepimeoniaissi')
+    field4 = models.IntegerField('Contabo')
+    field5 = models.IntegerField('Kornet')
+    field6 = models.IntegerField('Digital Ocean')
+    field7 = models.IntegerField('Alibaba.com Singapore E-Co')
+    field8 = models.IntegerField('Hetzner')
+
+class VPS(models.Model):
+    name = models.CharField('Название ноды', max_length=250)
+    field1 = models.IntegerField('South Korea')
+    field2 = models.IntegerField('Germany')
+    field3 = models.IntegerField('United States')
+    field4 = models.IntegerField('Hong Kong')
+    field5 = models.IntegerField('Singapore')
+    field6 = models.IntegerField('Russia')
+    field7 = models.IntegerField('Netherlands')
+    field8 = models.IntegerField('Finland')
+
+
+class Country(models.Model):
+    name = models.CharField('Название ноды', max_length=250)
+    field1 = models.IntegerField('December')
+    field2 = models.IntegerField('January')
+    field3 = models.IntegerField('February')
+    field4 = models.IntegerField('March')
+    field5 = models.IntegerField('April')
+    field6 = models.IntegerField('May')
